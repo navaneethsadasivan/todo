@@ -10,14 +10,6 @@
         />
       </div>
     </el-card>
-
-    <el-dialog
-      :visible.sync="dialogVisible"
-      width="70%"
-      title="Enter a new task"
-    >
-      <el-input @keyup.enter.native="addNewToDo" placeholder="Type and press enter" v-model="input"></el-input>
-    </el-dialog>
   </div>
 </template>
 

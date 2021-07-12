@@ -14,8 +14,10 @@
       name: "add-new-task",
       methods: {
           addNewToDo() {
-            this.$store.commit('list/add', this.input)
-            this.input = ''
+            if (this.input !== '') {
+              this.$store.commit('list/add', this.input)
+              this.input = ''
+            }
           }
       },
       data() {
