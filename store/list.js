@@ -18,5 +18,14 @@ export const mutations = {
   },
   toggle(state, listItem) {
     listItem.done = !listItem.done
+  },
+  remove(state, listItem) {
+    state.list.splice(state.list.indexOf(listItem), 1)
+  }
+}
+
+export const getters = {
+  getCount: (state) => {
+    return state.list.length
   }
 }

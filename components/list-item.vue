@@ -1,10 +1,13 @@
 <template>
-  <el-row type="flex" justify="space-around">
+  <el-row type="flex" align="center" justify="space-between">
     <el-col :span="4">
       <el-checkbox :checked="listItem.done" @change="toggle(listItem)"></el-checkbox>
     </el-col>
-    <el-col :span="20">
+    <el-col :span="16">
       <p>{{ listItem.text }}</p>
+    </el-col>
+    <el-col :span="4">
+      <i @click="remove(listItem)" class="ri-close-circle-line ri-2x" style="color: orangered"></i>
     </el-col>
   </el-row>
 </template>
@@ -18,12 +21,15 @@
       },
       methods: {
         ...mapMutations({
-          toggle: 'list/toggle'
+          toggle: 'list/toggle',
+          remove: 'list/remove'
         })
       }
     }
 </script>
 
 <style scoped>
-
+  .el-col {
+    align-self: center;
+  }
 </style>

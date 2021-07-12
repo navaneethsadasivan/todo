@@ -9,8 +9,6 @@
           :list-item="item"
         />
       </div>
-      <el-divider></el-divider>
-      <el-button type="primary" @click="dialogVisible = true">Add +</el-button>
     </el-card>
 
     <el-dialog
@@ -32,13 +30,14 @@
       computed: {
           list() {
             return this.$store.state.list.list
+          },
+          listSize() {
+            console.log(this.$store.getters.getCount)
           }
         },
         methods: {
           addNewToDo(e) {
             this.dialogVisible = false
-            this.input = ''
-            this.$store.commit('list/add', e.target.value)
           }
         },
         data() {
@@ -51,7 +50,4 @@
 </script>
 
 <style scoped>
-  .card-box {
-    width: 40%;
-  }
 </style>
