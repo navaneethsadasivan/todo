@@ -6,7 +6,10 @@
         <list/>
       </el-col>
       <el-col :span="8">
-        <add-new-task/>
+        <div style="padding-bottom: 20px">
+          <add-new-task/>
+        </div>
+        <progress-bar/>
       </el-col>
     </el-row>
   </div>

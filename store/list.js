@@ -29,5 +29,14 @@ export const mutations = {
 export const getters = {
   getCount: state => {
     return state.list.length
+  },
+  getCompleted: state => {
+    let counter = 0
+    state.list.forEach(data => {
+      if (data.done) {
+        counter++
+      }
+    })
+    return counter
   }
 }

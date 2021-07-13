@@ -6,7 +6,7 @@
     <el-input placeholder="Enter the new task" v-model="input"></el-input>
     <div style="margin-top: 20px">
       <el-radio-group v-model="radio">
-        <el-radio-button v-for="radio in radios" :label="radio.name"></el-radio-button>
+        <el-radio-button v-for="radio in radios" :key="radio.name" :label="radio.name"></el-radio-button>
       </el-radio-group>
     </div>
     <el-divider></el-divider>

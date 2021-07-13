@@ -1,16 +1,24 @@
 <template>
   <div>
-    <el-card class="card-box">
+    <el-card>
       <div slot="header">
-        <p>To-Do List</p>
+        <el-row type="flex" align="center">
+          <span>To-Do List</span>
+          <i class="ri-todo-line" style="margin-left: 5px"></i>
+        </el-row>
       </div>
-      <el-collapse accordion>
-        <div v-for="item in list" :key="item.id">
-          <list-item
-            :list-item="item"
-          />
-        </div>
-      </el-collapse>
+      <div v-if="listSize">
+        <el-collapse accordion>
+          <div v-for="item in list" :key="item.id">
+            <list-item
+              :list-item="item"
+            />
+          </div>
+        </el-collapse>
+      </div>
+      <div v-else>
+        <el-empty discription="No Data"></el-empty>
+      </div>
     </el-card>
   </div>
 </template>
