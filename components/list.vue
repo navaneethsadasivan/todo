@@ -4,11 +4,13 @@
       <div slot="header">
         <p>To-Do List</p>
       </div>
-      <div v-for="item in list" :key="item.id">
-        <list-item
-          :list-item="item"
-        />
-      </div>
+      <el-collapse accordion>
+        <div v-for="item in list" :key="item.id">
+          <list-item
+            :list-item="item"
+          />
+        </div>
+      </el-collapse>
     </el-card>
   </div>
 </template>
