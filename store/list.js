@@ -3,17 +3,19 @@ export const state = () => ({
     {
       text: "This is a text",
       done: true,
-      id: 1
+      id: 1,
+      priority: 'critical'
     }
   ]
 })
 
 export const mutations = {
-  add(state, text) {
+  add(state, data) {
     state.list.push({
-      text: text,
+      text: data['text'],
       done: false,
-      id: state.list.length + 1
+      id: state.list.length + 1,
+      priority: data['priority']
     })
   },
   toggle(state, listItem) {

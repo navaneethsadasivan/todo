@@ -21,7 +21,7 @@
                 </el-col>
                 <el-col :span="12">
                   <el-form-item label="Priority: ">
-                    <el-tag effect="dark" :type="task.priority">Critical</el-tag>
+                    <el-tag effect="dark" :type="task.color">{{task.priority}}</el-tag>
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -49,13 +49,18 @@
         })
       },
       data() {
+        const priorityColors = [
+          {priority: 'critical', color: 'danger'},
+          {priority: 'medium', color: 'warning'},
+          {priority: 'low', color: 'success'},
+        ]
         return {
           labelPosition: 'left',
           form: {
             name: this.listItem.text
           },
           task: {
-            priority: 'danger'
+            priority: this.listItem.priority
           }
         }
       }
