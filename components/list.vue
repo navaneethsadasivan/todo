@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex'
+    import { mapGetters } from 'vuex'
     import ListItem from "./list-item";
 
     export default {
@@ -23,14 +23,9 @@
           list() {
             return this.$store.state.list.list
           },
-          listSize() {
-            console.log(this.$store.getters.getCount)
-          }
-        },
-        methods: {
-          addNewToDo(e) {
-            this.dialogVisible = false
-          }
+          ...mapGetters({
+            listSize: 'list/getCount'
+          })
         },
         data() {
           return {

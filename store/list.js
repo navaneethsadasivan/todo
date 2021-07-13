@@ -25,7 +25,7 @@ export const mutations = {
 }
 
 export const getters = {
-  getCount: (state) => {
+  getCount: state => {
     return state.list.length
   }
 }

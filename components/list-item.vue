@@ -4,7 +4,20 @@
       <el-checkbox :checked="listItem.done" @change="toggle(listItem)"></el-checkbox>
     </el-col>
     <el-col :span="16">
-      <p>{{ listItem.text }}</p>
+      <el-collapse accordion>
+        <el-collapse-item :name="listItem.id">
+          <template slot="title">
+            <p>{{ listItem.text }}</p>
+          </template>
+          <div>
+            <el-card>
+              <div slot="header">
+                <p>Test</p>
+              </div>
+            </el-card>
+          </div>
+        </el-collapse-item>
+      </el-collapse>
     </el-col>
     <el-col :span="4">
       <i @click="remove(listItem)" class="ri-close-circle-line ri-2x" style="color: orangered"></i>
