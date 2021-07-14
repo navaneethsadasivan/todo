@@ -3,7 +3,11 @@
     <div slot="header">
       Enter a new task
     </div>
-    <el-input placeholder="Enter the new task" v-model="input"></el-input>
+    <el-form :model="ruleForm" :rules="rules">
+      <el-form-item prop="input">
+        <el-input placeholder="Enter the new task" v-model="ruleForm.input"></el-input>
+      </el-form-item>
+    </el-form>
     <div style="margin-top: 20px">
       <el-radio-group v-model="radio">
         <el-radio-button v-for="radio in radios" :key="radio.name" :label="radio.name"></el-radio-button>
@@ -19,13 +23,13 @@
       name: "add-new-task",
       methods: {
           addNewToDo() {
-            if (this.input !== '') {
+            if (this.ruleForm.input !== '') {
               let data = {
-                text : this.input,
+                text : this.ruleForm.input,
                 priority: this.radio
               }
               this.$store.commit('list/add', data)
-              this.input = ''
+              this.ruleForm.input = ''
               this.$message({
                 message: 'Task added',
                 type: 'success'
@@ -35,7 +39,14 @@
       },
       data() {
         return {
-          input: '',
+          ruleForm: {
+            input: '',
+          },
+          rules: {
+            input: [
+              {required: true, message: 'Please enter task', trigger: 'blur'}
+            ]
+          },
           radio: 'Critical',
           radios: [
             { name: 'Low', style: 'success' },
