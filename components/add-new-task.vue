@@ -26,6 +26,10 @@
               }
               this.$store.commit('list/add', data)
               this.input = ''
+              this.$message({
+                message: 'Task added',
+                type: 'success'
+              })
             }
           }
       },
