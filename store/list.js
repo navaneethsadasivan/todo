@@ -30,7 +30,7 @@ export const getters = {
   getCount: state => {
     return state.list.length
   },
-  getCompleted: state => {
+  getCompletedCount: state => {
     let counter = 0
     state.list.forEach(data => {
       if (data.done) {
@@ -38,5 +38,26 @@ export const getters = {
       }
     })
     return counter
+  },
+  getWithFilters: (state, filters) => {
+    let filterList = []
+    if (!filters || !filters.isArray) {
+      return state.list
+    } else {
+      state.list.forEach(data => {
+        if (data.done === filters.completed || data.done === filters.pending) {
+          if (filters.critical && data.priority === 'critical') {
+            filterList.push(data)
+          } else if (filters.medium && data.priority === 'medium') {
+            filterList.push(data)
+          } else if (filters.low && data.priority === 'low') {
+            filterList.push(data)
+          } else if (!filters.critical && !filters.medium && !filters.low) {
+            filterList.push(data)
+          }
+        }
+      })
+      return filterList
+    }
   }
 }

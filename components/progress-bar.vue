@@ -29,7 +29,7 @@
       name: "progress",
       computed: {
         ...mapGetters({
-          completed: 'list/getCompleted',
+          completed: 'list/getCompletedCount',
           total: 'list/getCount'
         })
       },
