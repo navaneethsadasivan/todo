@@ -27,9 +27,9 @@
         <el-col>
           <i @click="remove(listItem)" class="ri-close-circle-line ri-2x" style="color: orangered"></i>
         </el-col>
-        <el-col>
-          <i class="ri-edit-2-line ri-2x" style="color: dodgerblue"></i>
-        </el-col>
+<!--        <el-col>-->
+<!--          <i class="ri-edit-2-line ri-2x" style="color: dodgerblue"></i>-->
+<!--        </el-col>-->
       </el-row>
     </el-col>
   </el-row>
