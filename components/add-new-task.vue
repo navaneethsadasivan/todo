@@ -3,7 +3,7 @@
     <div slot="header">
       Enter a new task
     </div>
-    <el-form :model="ruleForm" :rules="rules">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
       <el-form-item prop="input">
         <el-input placeholder="Enter the new task" v-model="ruleForm.input"></el-input>
       </el-form-item>
@@ -14,29 +14,13 @@
       </el-radio-group>
     </div>
     <el-divider></el-divider>
-    <el-button type="primary" @click.native="addNewToDo">Add +</el-button>
+    <el-button type="primary" @click.native="addNewToDo('ruleForm')">Add +</el-button>
   </el-card>
 </template>
 
 <script>
     export default {
       name: "add-new-task",
-      methods: {
-          addNewToDo() {
-            if (this.ruleForm.input !== '') {
-              let data = {
-                text : this.ruleForm.input,
-                priority: this.radio
-              }
-              this.$store.commit('list/add', data)
-              this.ruleForm.input = ''
-              this.$message({
-                message: 'Task added',
-                type: 'success'
-              })
-            }
-          }
-      },
       data() {
         return {
           ruleForm: {
@@ -54,7 +38,25 @@
             { name: 'Critical', style: 'danger' },
           ]
         }
-      }
+      },
+      methods: {
+        addNewToDo(formName) {
+          this.$refs[formName].validate((valid) => {
+            if (valid) {
+              let data = {
+                text : this.ruleForm.input,
+                priority: this.radio
+              }
+              this.$store.commit('list/add', data)
+              this.ruleForm.input = ''
+              this.$message({
+                message: 'Task added',
+                type: 'success'
+              })
+            }
+          })
+        }
+      },
     }
 </script>
 
