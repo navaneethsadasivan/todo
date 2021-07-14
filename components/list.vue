@@ -7,14 +7,30 @@
           <i class="ri-todo-line" style="margin-left: 5px"></i>
         </el-row>
       </div>
+      <div class="listBody">
+        <el-row type="flex">
+          <el-col :span="4">
+            <span>Status</span>
+          </el-col>
+          <el-col :span="12">
+            <span>Task</span>
+          </el-col>
+          <el-col :span="4">
+            <span>Priority</span>
+          </el-col>
+          <el-col :span="4">
+            <span>Action</span>
+          </el-col>
+        </el-row>
+      </div>
+      <el-divider></el-divider>
       <div v-if="listSize">
-        <el-collapse accordion>
-          <div v-for="item in list" :key="item.id">
-            <list-item
-              :list-item="item"
-            />
-          </div>
-        </el-collapse>
+        <div v-for="item in list" :key="item.id">
+          <list-item
+            :list-item="item"
+          />
+          <el-divider></el-divider>
+        </div>
       </div>
       <div v-else>
         <el-empty discription="No Data"></el-empty>

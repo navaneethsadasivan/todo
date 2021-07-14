@@ -15,7 +15,7 @@ export const mutations = {
       text: data['text'],
       done: false,
       id: state.list.length + 1,
-      priority: data['priority']
+      priority: data['priority'].toLowerCase()
     })
   },
   toggle(state, listItem) {
