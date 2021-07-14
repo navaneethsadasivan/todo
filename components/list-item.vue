@@ -1,13 +1,14 @@
 <template>
   <el-row type="flex" align="center" justify="space-between">
     <el-col :span="4">
-      <el-switch
-        :value="listItem.done"
-        active-color="#13ce66"
-        inactive-color="#ff4949"
-        @change="toggle(listItem)"
-      ></el-switch>
-<!--      <el-checkbox :checked="listItem.done" @change="toggle(listItem)"></el-checkbox>-->
+      <el-tooltip effect="light" :content="statusSwitchTooltip(listItem.done)" placement="top-start">
+        <el-switch
+          :value="listItem.done"
+          active-color="#13ce66"
+          inactive-color="#ff4949"
+          @change="toggle(listItem)"
+        ></el-switch>
+      </el-tooltip>
     </el-col>
     <el-col :span="12">
       <span>{{ listItem.text }}</span>
@@ -22,7 +23,14 @@
       </el-tag>
     </el-col>
     <el-col :span="4">
-      <i @click="remove(listItem)" class="ri-close-circle-line ri-2x" style="color: orangered"></i>
+      <el-row type="flex">
+        <el-col>
+          <i @click="remove(listItem)" class="ri-close-circle-line ri-2x" style="color: orangered"></i>
+        </el-col>
+        <el-col>
+          <i class="ri-edit-2-line ri-2x" style="color: dodgerblue"></i>
+        </el-col>
+      </el-row>
     </el-col>
   </el-row>
 </template>
@@ -49,6 +57,13 @@
               return 'warning'
             } else {
               return 'success'
+            }
+          },
+          statusSwitchTooltip: function (status) {
+            if (status) {
+              return 'Completed'
+            } else {
+              return 'Pending'
             }
           }
         }
