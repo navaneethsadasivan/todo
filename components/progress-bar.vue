@@ -6,7 +6,7 @@
     <div v-if="total">
       <el-row type="flex" justify="center">
         <el-col :span="6">
-          <el-progress type="circle" :color="colors" :percentage="((completed/total)*100).toFixed(0)"></el-progress>
+          <el-progress type="circle" :color="colors" :percentage="Math.floor((completed/total)*100)"></el-progress>
         </el-col>
       </el-row>
     </div>
